@@ -41,6 +41,9 @@ class ModulatedDetection(torchvision.datasets.CocoDetection):
             tokenized = self.prepare.tokenizer(caption, return_tensors="pt")
             target["positive_map_eval"] = create_positive_map(tokenized, coco_img["tokens_positive_eval"])
             target["nb_eval"] = len(target["positive_map_eval"])
+        
+        if 'phrases' in coco_img:
+            target['phrases'] = coco_img['phrases']
 
         return img, target
 
