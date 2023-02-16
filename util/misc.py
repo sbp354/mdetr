@@ -158,5 +158,6 @@ def targets_to(targets: List[Dict[str, Any]], device):
         "nb_eval",
         "task_id",
         "original_id",
+        "phrases",
     ]
     return [{k: v.to(device) if k not in excluded_keys else v for k, v in t.items() if k != "caption"} for t in targets]
